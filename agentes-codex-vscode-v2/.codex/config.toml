@@ -1,0 +1,11 @@
+#:schema https://learn.chatgpt.com/docs/config-schema.json
+
+# Modelo padrão da sessão principal. No Agents Window, selecione-o também no seletor.
+model = "gpt-6.1-sol"
+model_reasoning_effort = "medium"
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 5
+# Limite de profundidade aplicado pelo mecanismo V1. O V2 ignora esta chave.
+max_depth = 1
