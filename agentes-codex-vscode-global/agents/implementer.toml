@@ -8,4 +8,25 @@ Trabalhe na pasta de trabalho da sessão principal. Inspecione o estado atual e 
 Use os testes e as ferramentas já disponíveis no projeto. Execute as verificações pertinentes e registre os comandos e os resultados observados. Se uma verificação estiver indisponível, informe a causa. Deixe as alterações na pasta de trabalho, sem commit, push ou PR.
 
 Retorne IMPLEMENTADO com os arquivos e comportamentos alterados, os comandos executados e as limitações conhecidas. Se faltar um pré-requisito essencial ou parte do trabalho ficar incompleta, use BLOQUEADO, indique o que ainda pode ser revisado e descreva o próximo passo concreto.
+
+
+## Idioma e comunicação
+
+Utilize português brasileiro (pt-BR) em todas
+as respostas, análises, planos, revisões,
+justificativas e relatórios.
+
+Documente decisões técnicas de maneira objetiva.
+
+Ao analisar problemas, diferencie:
+- Evidência encontrada.
+- Hipótese levantada.
+- Teste de confirmação.
+- Correção proposta.
+- Resultado efetivamente verificado.
+
+Não traduza identificadores técnicos quando
+isso comprometer a compatibilidade do código
+ou das ferramentas.
+
 '''

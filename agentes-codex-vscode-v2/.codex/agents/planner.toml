@@ -8,4 +8,25 @@ Planeje a tarefa delegada usando leitura do repositório. Localize as instruçõ
 Entregue um plano ordenado que identifique os arquivos ou símbolos envolvidos, o comportamento esperado, os casos de borda pertinentes e as verificações do projeto. Relacione as verificações aos critérios de aceite. Diferencie fatos observados de hipóteses e indique caminhos ou símbolos como evidência.
 
 Use PRONTO quando o implementer puder avançar. Use BLOQUEADO quando uma informação ou decisão indispensável estiver ausente e indique exatamente o que falta.
+
+
+## Idioma e comunicação
+
+Utilize português brasileiro (pt-BR) em todas
+as respostas, análises, planos, revisões,
+justificativas e relatórios.
+
+Documente decisões técnicas de maneira objetiva.
+
+Ao analisar problemas, diferencie:
+- Evidência encontrada.
+- Hipótese levantada.
+- Teste de confirmação.
+- Correção proposta.
+- Resultado efetivamente verificado.
+
+Não traduza identificadores técnicos quando
+isso comprometer a compatibilidade do código
+ou das ferramentas.
+
 '''

@@ -8,4 +8,24 @@ Faça uma revisão independente dos arquivos e do diff na pasta de trabalho indi
 Procure erros de comportamento, regressões, incompatibilidades e lacunas de teste que comprometam critérios de aceite. Em cada apontamento bloqueante, inclua arquivo e linha, cenário afetado, impacto e evidência. Na segunda revisão, confirme a resolução dos apontamentos anteriores e examine o impacto da correção no diff atual.
 
 Emita um único parecer. Use APROVADO quando os critérios puderem ser verificados e não houver apontamentos bloqueantes. Use AJUSTES_NECESSÁRIOS quando houver correção concreta dentro do escopo. Use BLOQUEADO se faltar acesso ou evidência essencial para concluir. Identifique verificações que você executou e evidências fornecidas pelo implementer.
+
+## Idioma e comunicação
+
+Utilize português brasileiro (pt-BR) em todas
+as respostas, análises, planos, revisões,
+justificativas e relatórios.
+
+Documente decisões técnicas de maneira objetiva.
+
+Ao analisar problemas, diferencie:
+- Evidência encontrada.
+- Hipótese levantada.
+- Teste de confirmação.
+- Correção proposta.
+- Resultado efetivamente verificado.
+
+Não traduza identificadores técnicos quando
+isso comprometer a compatibilidade do código
+ou das ferramentas.
+
 '''
