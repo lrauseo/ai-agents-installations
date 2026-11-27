@@ -32,19 +32,19 @@ max_depth = 1
 
 ## Uso e diagnóstico
 
-O fluxo usa `planner` (GPT-6.1 Sol, alto), `implementer` (GPT-6.1 Sol, médio) e `reviewer` (GPT-6 Astra, médio). Se o Astra estiver indisponível na sessão, ajuste `agents/reviewer.toml` para `gpt-6.1-sol` com esforço `high`. O orquestrador encerra após uma aprovação ou após a segunda revisão, com uma única rodada de correção. [Modelos Codex](https://learn.chatgpt.com/docs/models)
+Tarefas simples são resolvidas sem subagentes. Em trabalho complexo ou de risco, o orquestrador aciona `planner` quando necessário, `implementer` e `reviewer`. O esforço padrão é baixo para o orquestrador e médio para especialistas; a revisão usa GPT-6.1 Sol. [Modelos Codex](https://learn.chatgpt.com/docs/models)
 
 - Para conferir a entrada do seletor, abra **Customizations → Agents** com a sessão Codex selecionada. Se a entrada estiver ausente, confira a configuração de **usuário** e se o caminho contém o `.agent.md`. [Editor de personalizações](https://code.visualstudio.com/docs/agent-customization/overview#agent-customizations-editor)
 - Para testar só a delegação, peça no chat principal `Acione apenas o subagente nativo planner para indicar os comandos de teste do repositório. Aguarde o resultado e preserve os arquivos.` Confira a atividade da sessão. Se o papel estiver indisponível, confira a pasta do Codex usada pelo Agent Host e abra uma sessão nova. [Subagentes no VS Code](https://code.visualstudio.com/docs/agents/run/subagents)
 - Se o seletor estiver indisponível, você pode iniciar o fluxo pelo chat. Peça `Atue como orquestrador na sessão principal. Leia o campo developer_instructions do arquivo agents/orquestrador.toml da minha pasta global do Codex e siga o fluxo. Use os subagentes nativos planner, implementer e reviewer.` Informe o caminho completo do TOML se estiver usando um `CODEX_HOME` personalizado.
 
-Se o repositório já tiver o orquestrador da edição por projeto, podem aparecer duas entradas com o mesmo nome. Você pode conferir a origem em **Customizations → Agents**. A edição global inclui as instruções completas no Markdown para funcionar em repositórios sem o TOML do orquestrador na raiz. Ao alterar o fluxo global, mantenha o Markdown e `agents/orquestrador.toml` alinhados.
+Se o repositório já tiver o orquestrador da edição por projeto, podem aparecer duas entradas com o mesmo nome. Você pode conferir a origem em **Customizations → Agents**. O Markdown global encaminha ao TOML global. Ao alterar o fluxo, mantenha ambos alinhados.
 
 ## Git Manager
-Selecione Git Manager diretamente no VS Code ou delegue pelo orquestrador. No Codex o papel nativo é `git_manager`; no Copilot, `Git Manager`. Instale os novos TOML/Markdown do pacote e abra nova sessão. O fluxo pergunta sempre no início sobre branch, nome/origem, PR/base, conflitos e commit/push. Merge efetivo exige autorização separada após revisão e checks. O Git Manager não substitui Implementer ou Reviewer.
+Selecione Git Manager diretamente no VS Code ou delegue pelo orquestrador. No Codex o papel nativo é `git_manager`; no Copilot, `Git Manager`. Instale os novos TOML/Markdown do pacote e abra nova sessão. O fluxo só trata de operações Git quando o usuário as solicita. Merge efetivo exige autorização separada após revisão e checks. O Git Manager não substitui Implementer ou Reviewer.
 
 ### Checklist de validação manual
-- Inicie uma orquestração e confira perguntas antes do Planner; negue branch e PR e confira ausência de escrita Git.
+- Inicie tarefas simples e complexas; confira que apenas as complexas acionam especialistas.
 - Em repositório descartável, autorize branch com nome delegado e confira origem e preservação de alterações.
 - Autorize PR sem merge; confira URL, base/head e PR aberto.
 - Simule conflito: negue autorização e confira ausência de edição; autorize e confira diff, testes e nova revisão antes de publicar.

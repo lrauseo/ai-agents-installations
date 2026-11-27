@@ -2,7 +2,7 @@
 
 # Modelo padrão da sessão principal. No Agents Window, selecione-o também no seletor.
 model = "gpt-6.1-sol"
-model_reasoning_effort = "medium"
+model_reasoning_effort = "low"
 
 [agents]
 enabled = true
