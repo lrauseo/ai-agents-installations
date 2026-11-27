@@ -1,6 +1,6 @@
 # Agentes Codex no VS Code
 
-Selecione **Orquestrador Codex** no **Agents Window** do VS Code para iniciar o fluxo. A sessão principal coordena três subagentes nativos e encerra após a primeira aprovação ou, se houver correções, após a segunda revisão.
+Selecione **Orquestrador Codex** no **Agents Window** do VS Code para iniciar o fluxo. A sessão principal coordena subagentes nativos e encerra após a primeira aprovação ou, se houver correções, após a segunda revisão.
 
 ## Instalar no projeto
 
@@ -61,3 +61,16 @@ orquestrador
 - `planner` e `reviewer` seguem instruções de somente leitura. As permissões efetivas são herdadas da sessão principal, incluindo a permissão de escrita usada pelo `implementer`. [Permissões dos subagentes](https://learn.chatgpt.com/docs/agent-configuration/subagents#approvals-and-sandbox-controls)
 
 Formato e limites conferidos na documentação oficial em 13 de novembro de 2026.
+
+## Git Manager
+Selecione Git Manager diretamente no VS Code ou delegue pelo orquestrador. No Codex o papel nativo é `git_manager`; no Copilot, `Git Manager`. Instale os novos TOML/Markdown do pacote e abra nova sessão. O fluxo pergunta sempre no início sobre branch, nome/origem, PR/base, conflitos e commit/push. Merge efetivo exige autorização separada após revisão e checks. O Git Manager não substitui Implementer ou Reviewer.
+
+### Checklist de validação manual
+- Inicie uma orquestração e confira perguntas antes do Planner; negue branch e PR e confira ausência de escrita Git.
+- Em repositório descartável, autorize branch com nome delegado e confira origem e preservação de alterações.
+- Autorize PR sem merge; confira URL, base/head e PR aberto.
+- Simule conflito: negue autorização e confira ausência de edição; autorize e confira diff, testes e nova revisão antes de publicar.
+- Selecione Git Manager diretamente; teste falta de terminal/autenticação e confirme BLOCKED.
+- Teste múltiplos repositórios e retomada sem repetir decisões inalteradas.
+
+A execução depende do harness e das permissões locais. Os gates são instruções orientadas por modelo, não garantias determinísticas.

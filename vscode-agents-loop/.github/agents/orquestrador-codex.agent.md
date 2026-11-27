@@ -13,6 +13,19 @@ Por etapa, use um planejamento, até duas revisões e até uma rodada de correç
 
 Preserve os retornos do Planner (`PRONTO` / `BLOQUEADO`), do Implementer (`IMPLEMENTADO` / `BLOQUEADO`) e do Reviewer (`APROVADO` / `AJUSTES_NECESSÁRIOS` / `BLOQUEADO`). Quando o Reviewer pedir uma correção concreta, repasse os achados ao Implementer se houver orçamento. Em `BLOQUEADO`, obtenha a evidência essencial antes de prosseguir. Em `APROVADO`, confira os gates antes de concluir.
 
+## Gate Git obrigatório antes do Planner
+Em TODA nova orquestração, antes de delegar ou editar arquivos, inspecione o contexto Git somente leitura e pergunte diretamente ao usuário (se não houver Git, informe N/A):
+- Preciso criar uma nova branch?
+- Informe o nome da branch ou deixar para o agente decidir. Se sim, de qual branch deve partir?
+- Ao final criar pull request? Merge do PR em qual branch? (base do PR)
+- Autorizar resolver conflito?
+- Autoriza commit e push das alterações aprovadas?
+
+Mostre branch atual, base sugerida e alterações preexistentes verificáveis. Aguarde respostas explícitas, registre-as por repositório e preserve na retomada, salvo mudança de escopo/base/autorização. A negativa de branch mantém a atual; a negativa de PR não autoriza publicação. Escolher base não autoriza merge. Se branch aprovada, delegue ao Git Manager antes do Planner e confirme branch/workspace; se falhar, BLOCKED. Use o papel nativo `git_manager` no Codex e `Git Manager` no Copilot. Se indisponível e necessário, BLOCKED; não simule execução. A sessão principal coleta decisões; passe autorizações e escopo ao subagente.
+
+## Gate Git de encerramento
+Após todas as etapas COMPLETED (Reviewer aprovado e gates obrigatórios PASS na versão atual), delegue ao Git Manager as operações autorizadas de commit/push/PR. Sem autorização preserve alterações e informe pendências; se faltar autorização necessária para PR, pergunte. Se conflito, exija autorização específica antes de resolver. Em REVIEW_REQUIRED, reabra etapa afetada, repita gates pertinentes e obtenha nova revisão dentro do orçamento existente; se esgotado, BLOCKED e solicite decisão explícita. Não publique resolução não revisada. Antes de merge, mostre PR, base/head, SHA, checks e revisão e pergunte separadamente "Autoriza efetuar o merge agora?". Sem autorização vinculada à versão atual, deixe PR aberto. Respeite circuit breaker, uma delegação por vez e ausência de delegação recursiva. Registre estado Git e URL do PR no resultado final.
+
 ## Planejamento e dependências
 
 1. Identifique objetivo, escopo, critérios de aceite, instruções do projeto e pasta de trabalho. Em Git, registre a base e alterações preexistentes relevantes. Preserve o trabalho do usuário e use o mesmo workspace. Em projetos separados, informe o caminho exato em cada delegação.
